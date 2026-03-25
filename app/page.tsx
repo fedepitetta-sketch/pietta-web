@@ -39,20 +39,12 @@ const cuidadosAlmohadones = [
   "Con el uso y el sol, es normal que puedan presentar ligeras variaciones de color.",
 ];
 
-function IconBase({
-  children,
-  size = 20,
-  className = "",
-}: {
-  children: React.ReactNode;
-  size?: number;
-  className?: string;
-}) {
+function ArrowRightIcon({ className = "" }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -62,79 +54,50 @@ function IconBase({
       className={className}
       aria-hidden="true"
     >
-      {children}
+      <path d="M5 12h14" />
+      <path d="m13 5 7 7-7 7" />
     </svg>
   );
 }
 
-function ArrowRightIcon({
-  size = 16,
-  className = "",
-}: {
-  size?: number;
-  className?: string;
-}) {
+function InstagramIcon() {
   return (
-    <IconBase size={size} className={className}>
-      <path d="M5 12h14" />
-      <path d="m13 5 7 7-7 7" />
-    </IconBase>
-  );
-}
-
-function InstagramIcon({ size = 20 }: { size?: number }) {
-  return (
-    <IconBase size={size}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-    </IconBase>
+    </svg>
   );
 }
 
-function MailIcon({ size = 20 }: { size?: number }) {
+function MailIcon() {
   return (
-    <IconBase size={size}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <rect x="3" y="5" width="18" height="14" rx="2" />
       <path d="m4 7 8 6 8-6" />
-    </IconBase>
-  );
-}
-
-function ContactCard({
-  icon,
-  label,
-  value,
-  description,
-  href,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  description: string;
-  href: string;
-}) {
-  return (
-    <a
-      href={href}
-      target={href.startsWith("http") ? "_blank" : undefined}
-      rel={href.startsWith("http") ? "noreferrer" : undefined}
-      className="group block rounded-[2rem] border border-[#ddd2c6] bg-white p-7 shadow-[0_10px_35px_rgba(40,26,14,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(40,26,14,0.10)]"
-    >
-      <div className="mb-4 text-[#4b3a2f]">{icon}</div>
-      <div className="text-[11px] uppercase tracking-[0.24em] text-[#8a7a6e]">
-        {label}
-      </div>
-      <div className="mt-2 text-lg font-medium text-[#2e241d]">{value}</div>
-      <p className="mt-3 text-sm leading-7 text-[#64584e]">{description}</p>
-      <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#2e241d]">
-        Abrir{" "}
-        <ArrowRightIcon
-          size={15}
-          className="transition group-hover:translate-x-1"
-        />
-      </div>
-    </a>
+    </svg>
   );
 }
 
@@ -164,21 +127,55 @@ function SectionTitle({
   );
 }
 
+function ContactCard({
+  icon,
+  label,
+  value,
+  description,
+  href,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  description: string;
+  href: string;
+}) {
+  return (
+    <a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel={href.startsWith("http") ? "noreferrer" : undefined}
+      className="group block rounded-[1.8rem] border border-[#e4dace] bg-white p-7 shadow-[0_8px_30px_rgba(47,36,30,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_42px_rgba(47,36,30,0.10)]"
+    >
+      <div className="mb-4 text-[#4b3a2f]">{icon}</div>
+      <div className="text-[11px] uppercase tracking-[0.22em] text-[#8a7a6e]">
+        {label}
+      </div>
+      <div className="mt-2 text-lg font-medium text-[#2e241d]">{value}</div>
+      <p className="mt-3 text-sm leading-7 text-[#64584e]">{description}</p>
+      <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#2e241d]">
+        Abrir
+        <ArrowRightIcon className="transition duration-300 group-hover:translate-x-1" />
+      </div>
+    </a>
+  );
+}
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f6f2eb] text-[#2e241d] selection:bg-[#d8c5b3] selection:text-[#2e241d]">
-      <header className="sticky top-0 z-20 border-b border-[#e6ddd3] bg-[#f6f2eb]/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+    <div className="min-h-screen bg-[#f6f2eb] text-[#2e241d]">
+      <header className="sticky top-0 z-20 border-b border-[#e8ddd1] bg-[#f6f2eb]/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
           <div>
-            <div className="text-2xl font-semibold uppercase tracking-[0.22em]">
+            <div className="text-[2rem] font-semibold uppercase tracking-[0.22em] leading-none">
               Pietta
             </div>
-            <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-[#7f7063]">
+            <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#817265]">
               Muebles de exterior en lapacho
             </div>
           </div>
 
-          <nav className="hidden gap-7 text-sm text-[#5e5146] md:flex">
+          <nav className="hidden items-center gap-8 text-sm text-[#5e5146] md:flex">
             <a href="#coleccion" className="transition hover:text-[#2e241d]">
               Colección
             </a>
@@ -192,17 +189,17 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="mx-auto grid max-w-7xl items-center gap-14 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-24">
+      <section className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-24">
         <div>
-          <div className="mb-5 text-[11px] uppercase tracking-[0.3em] text-[#8a7a6e]">
+          <div className="mb-6 text-[11px] uppercase tracking-[0.30em] text-[#8a7a6e]">
             Uruguay · Diseño y producción
           </div>
 
-          <h1 className="max-w-xl text-5xl font-semibold leading-[1.02] md:text-6xl lg:text-7xl">
+          <h1 className="max-w-xl text-5xl font-semibold leading-[0.98] tracking-[-0.03em] text-[#2e241d] md:text-6xl lg:text-7xl">
             Muebles para habitar el exterior.
           </h1>
 
-          <p className="mt-7 max-w-md text-base leading-8 text-[#5f544a] md:text-lg">
+          <p className="mt-8 max-w-lg text-[1.05rem] leading-8 text-[#5f544a]">
             Diseñamos y producimos muebles en lapacho, pensados para acompañar
             la vida al aire libre con una estética serena, materiales nobles y
             una relación honesta con el tiempo.
@@ -211,40 +208,40 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#cuidados"
-              className="inline-flex items-center gap-2 rounded-full bg-[#2e241d] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-[#2e241d] px-6 py-3 text-sm font-medium text-white transition duration-300 hover:opacity-90"
             >
-              Ver cuidados <ArrowRightIcon size={15} />
+              Ver cuidados <ArrowRightIcon />
             </a>
 
             <a
               href="#coleccion"
-              className="rounded-full border border-[#cbbcae] px-6 py-3 text-sm font-medium text-[#2e241d] transition hover:bg-[#efe6db]"
+              className="inline-flex items-center rounded-full border border-[#cfc1b3] px-6 py-3 text-sm font-medium text-[#2e241d] transition duration-300 hover:bg-[#efe6db]"
             >
               Ver colección
             </a>
           </div>
         </div>
 
-        <div className="relative h-[620px] overflow-hidden rounded-[2.5rem] border border-[#e2d7cb] bg-[linear-gradient(180deg,#f3eee8_0%,#ebe2d8_100%)] shadow-[0_24px_80px_rgba(47,36,30,0.08)]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.9),transparent_35%)]" />
+        <div className="relative h-[640px] overflow-hidden rounded-[2.5rem] border border-[#e3d8cc] bg-[linear-gradient(180deg,#f4efe8_0%,#ece4d9_100%)] shadow-[0_24px_80px_rgba(47,36,30,0.08)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),transparent_35%)]" />
 
           <img
             src="/detalle1.jpg"
             alt="Detalle de madera Pietta"
-            className="absolute left-7 top-7 h-[200px] w-[240px] rounded-[1.6rem] object-cover shadow-[0_22px_55px_rgba(47,36,30,0.14)] transition duration-500 hover:-translate-y-1"
+            className="absolute left-8 top-8 h-[210px] w-[250px] rounded-[1.7rem] object-cover shadow-[0_22px_55px_rgba(47,36,30,0.14)] transition duration-500 hover:-translate-y-1"
           />
 
           <img
             src="/sofa1.jpg"
             alt="Sillón exterior Pietta"
-            className="absolute bottom-0 right-0 h-[500px] w-[78%] rounded-tl-[2.2rem] object-cover object-center shadow-[0_30px_70px_rgba(47,36,30,0.18)] transition duration-500 hover:scale-[1.01]"
+            className="absolute bottom-0 right-0 h-[520px] w-[78%] rounded-tl-[2.2rem] object-cover object-center shadow-[0_30px_70px_rgba(47,36,30,0.18)] transition duration-500 hover:scale-[1.01]"
           />
 
-          <div className="absolute bottom-7 left-7 max-w-[240px] rounded-[1.5rem] border border-white/40 bg-white/55 p-5 backdrop-blur-md">
+          <div className="absolute bottom-8 left-8 max-w-[250px] rounded-[1.6rem] border border-white/40 bg-white/60 p-6 backdrop-blur-md">
             <div className="text-[11px] uppercase tracking-[0.24em] text-[#8a7a6e]">
               Pietta
             </div>
-            <p className="mt-2 text-sm leading-6 text-[#4f4339]">
+            <p className="mt-3 text-sm leading-6 text-[#4f4339]">
               Lapacho, proporción y una forma serena de vivir el exterior.
             </p>
           </div>
@@ -263,9 +260,9 @@ export default function Home() {
             {piezas.map((p) => (
               <article
                 key={p.nombre}
-                className="group overflow-hidden rounded-[2rem] border border-[#e2d7cb] bg-white shadow-[0_12px_35px_rgba(47,36,30,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(47,36,30,0.09)]"
+                className="group overflow-hidden rounded-[2rem] border border-[#e4dace] bg-white shadow-[0_12px_35px_rgba(47,36,30,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(47,36,30,0.09)]"
               >
-                <div className="overflow-hidden">
+                <div className="overflow-hidden bg-[#f8f4ee]">
                   <img
                     src={p.img}
                     alt={p.nombre}
@@ -298,7 +295,7 @@ export default function Home() {
           />
 
           <div className="mt-14 grid gap-8 md:grid-cols-2">
-            <div className="rounded-[2rem] border border-[#e2d7cb] bg-white p-8 shadow-[0_10px_35px_rgba(47,36,30,0.04)]">
+            <div className="rounded-[2rem] border border-[#e4dace] bg-white p-8 shadow-[0_10px_35px_rgba(47,36,30,0.04)]">
               <h3 className="text-xl font-medium text-[#2e241d]">Madera</h3>
               <ul className="mt-6 space-y-4 text-sm leading-7 text-[#64584e]">
                 {cuidados.map((c) => (
@@ -310,7 +307,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="rounded-[2rem] border border-[#e2d7cb] bg-white p-8 shadow-[0_10px_35px_rgba(47,36,30,0.04)]">
+            <div className="rounded-[2rem] border border-[#e4dace] bg-white p-8 shadow-[0_10px_35px_rgba(47,36,30,0.04)]">
               <h3 className="text-xl font-medium text-[#2e241d]">
                 Almohadones
               </h3>
@@ -337,14 +334,14 @@ export default function Home() {
 
           <div className="mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
             <ContactCard
-              icon={<InstagramIcon size={20} />}
+              icon={<InstagramIcon />}
               label="Instagram"
               value="@pietta.uy"
               description="Abrí el perfil real de Pietta y conocé la marca desde ahí."
               href="https://instagram.com/pietta.uy"
             />
             <ContactCard
-              icon={<MailIcon size={20} />}
+              icon={<MailIcon />}
               label="Email"
               value="piettauy@gmail.com"
               description="Abrí tu mail y escribinos directo para consultas."
